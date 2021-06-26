@@ -7,26 +7,26 @@ const { Provider } = AuthContext;
 const AuthProvider = ({ children }) => {
     const history = useHistory();
     const token = localStorage.getItem("token");
-    const userInfo = localStorage.getItem("userInfo");
+    const user = localStorage.getItem("user");
     const [authState, setAuthState] = useState({
         token,
-        userInfo: userInfo ? JSON.parse(userInfo) : {},
+        user: user ? JSON.parse(user) : {},
     });
 
-    const setAuthInfo = ({ token, userInfo }) => {
+    const setAuthInfo = ({ token, user }) => {
         localStorage.setItem("token", token);
-        localStorage.setItem("userInfo", JSON.stringify(userInfo));
-        setAuthState({ token, userInfo });
+        localStorage.setItem("user", JSON.stringify(user));
+        setAuthState({ token, user });
     };
 
     const logout = () => {
         localStorage.removeItem("token");
-        localStorage.removeItem("userInfo");
+        localStorage.removeItem("user");
         setAuthState({
             token: null,
-            userInfo: {},
+            user: {},
         });
-        history.push("/login");
+        history.push("signin");
     };
 
     const isAuthenticated = () => {
@@ -38,7 +38,7 @@ const AuthProvider = ({ children }) => {
     };
 
     const isAdmin = () => {
-        return authState.userInfo.role === "admin";
+        return authState.user.role === "admin";
     };
 
     return (

@@ -11,19 +11,20 @@ const FetchProvider = ({ children }) => {
     const authAxios = axios.create({
         baseURL: "http://localhost:3001/api/",
         headers: {
+            "x-auth-token": `${authContext.authState.token}`,
             "Content-Type": "application/json",
         },
     });
 
-    authAxios.interceptors.request.use(
-        (config) => {
-            config.headers.Authorization = `Token ${authContext.authState.token}`;
-            return config;
-        },
-        (error) => {
-            return Promise.reject(error);
-        }
-    );
+    // authAxios.interceptors.request.use(
+    //     (config) => {
+    //         config.headers.Authorization = `Token ${authContext.authState.token}`;
+    //         return config;
+    //     },
+    //     (error) => {
+    //         return Promise.reject(error);
+    //     }
+    // );
 
     return (
         <Provider

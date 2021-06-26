@@ -9,8 +9,7 @@ import {
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import Home from "./pages/Home";
-import Dashboard from "./pages/Dashboard";
-import AppShell from "./AppShell";
+import PageTemplate from "./pages/PageTemplate";
 
 import { AuthProvider, AuthContext } from "./context/AuthContext";
 import { FetchProvider } from "./context/FetchContext";
@@ -22,7 +21,7 @@ const AuthenticatedRoute = ({ children, ...rest }) => {
             {...rest}
             render={() =>
                 authContext.isAuthenticated() ? (
-                    <AppShell>{children}</AppShell>
+                    <>{children}</>
                 ) : (
                     <Redirect to="/" />
                 )
@@ -44,7 +43,7 @@ const AppRoutes = () => {
                 <SignIn />
             </Route>
             <AuthenticatedRoute path="/dashboard">
-                <Dashboard />
+                <PageTemplate />
             </AuthenticatedRoute>
         </Switch>
     );

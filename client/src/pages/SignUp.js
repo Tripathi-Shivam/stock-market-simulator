@@ -89,7 +89,7 @@ const SignUp = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
-    const [successMessage, setSuccessMessage] = useState("");
+    // const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
     const [redirectOnLogin, setRedirectOnLogin] = useState(false);
@@ -154,16 +154,19 @@ const SignUp = () => {
                 password,
             };
             try {
-                const { data } = await publicFetch.post("signup", credentials);
+                const { data } = await publicFetch.post(
+                    "auth/register",
+                    credentials
+                );
                 authContext.setAuthState(data);
                 console.log(data);
-                setSuccessMessage(data.message);
+                // setSuccessMessage(data.message);
                 clearFields();
                 setTimeout(() => {
                     setRedirectOnLogin(true);
                 }, 1000);
             } catch (error) {
-                setErrorMessage(error.response.data.message);
+                setErrorMessage("Check network tab");
                 setTimeout(() => {
                     setErrorMessage("");
                 }, 2000);
@@ -176,7 +179,7 @@ const SignUp = () => {
         <React.Fragment>
             {authContext.isAuthenticated() && <Redirect to="/dashboard" />}
             {redirectOnLogin && <Redirect to="/dashboard" />}
-            {successMessage && (
+            {/* {successMessage && (
                 <Typography
                     id="successfull"
                     variant="h6"
@@ -185,7 +188,7 @@ const SignUp = () => {
                 >
                     {successMessage}
                 </Typography>
-            )}
+            )} */}
 
             {errorMessage && (
                 <Typography
