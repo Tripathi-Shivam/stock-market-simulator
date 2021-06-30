@@ -6,7 +6,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Title from "../common/Title.jsx";
-// import SaleModal from "./SaleModal";
+import SaleModal from "./SaleModal";
 import { makeStyles } from "@material-ui/core/";
 
 const useStyles = makeStyles((theme) => ({
@@ -134,9 +134,9 @@ const Purchases = ({ purchasedStocks }) => {
                         })}
                     </TableBody>
                 </Table>
-                {/* {saleOpen && stock && (
-          <SaleModal setSaleOpen={setSaleOpen} stock={stock} />
-        )} */}
+                {saleOpen && stock && (
+                    <SaleModal setSaleOpen={setSaleOpen} stock={stock} />
+                )}
             </div>
         </React.Fragment>
     );

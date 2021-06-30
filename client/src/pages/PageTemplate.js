@@ -27,6 +27,7 @@ import Navbar from "../components/common/Navbar";
 import SecondNavbar from "../components/common/SecondNavbar";
 import Dashboard from "../components/Dashboard/Dashboard";
 import Search from "../components/Search/Search";
+import SettingsModal from "./SettingsModal";
 
 const drawerWidth = 240;
 
@@ -236,8 +237,7 @@ const PageTemplate = () => {
                     />
                 )}
                 {settingsOpen && (
-                    // <SettingsModal setSettingsOpen={setSettingsOpen} />
-                    <div>Settings</div>
+                    <SettingsModal setSettingsOpen={setSettingsOpen} />
                 )}
             </main>
         </div>

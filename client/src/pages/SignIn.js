@@ -141,17 +141,25 @@ const SignIn = () => {
                 password,
             };
             try {
-                const { data } = await publicFetch.post(
+                const response = await publicFetch.post(
                     "auth/login",
                     credentials
                 );
-                authContext.setAuthState(data);
-                console.log(data);
-                // setSuccessMessage(data.message);
-                clearFields();
-                setTimeout(() => {
+                console.log(response);
+                if (response.data.status === "fail") {
+                    setErrorMessage(response.data.message);
+                    setTimeout(() => {
+                        setErrorMessage("");
+                    }, 2000);
+                } else {
+                    authContext.setAuthState(response.data);
+                    clearFields();
+                    // setTimeout(() => {
+                    //     setRedirectOnLogin(true);
+                    // }, 1000);
                     setRedirectOnLogin(true);
-                }, 1000);
+                }
+                // setSuccessMessage(data.message);
             } catch (error) {
                 setErrorMessage("Front end error message");
                 setTimeout(() => {

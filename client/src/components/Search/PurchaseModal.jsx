@@ -83,7 +83,7 @@ const PurchaseModalContent = ({
 }) => {
     const [quantity, setQuantity] = useState(1);
     const [total, setTotal] = useState(Number(pastDay.adjClose));
-    const { authState } = useContext(AuthContext);
+    const { authState, setAuthState } = useContext(AuthContext);
     const classes = useStyles();
 
     const handleQuantityChange = (e) => {
@@ -131,6 +131,10 @@ const PurchaseModalContent = ({
         });
 
         if (response.data.status === "success") {
+            setAuthState({
+                token: authState.token,
+                user: response.data.user,
+            });
             setSelected(false);
 
             const newStock = {
