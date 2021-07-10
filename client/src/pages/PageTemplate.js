@@ -28,6 +28,7 @@ import SecondNavbar from "../components/common/SecondNavbar";
 import Dashboard from "../components/Dashboard/Dashboard";
 import Search from "../components/Search/Search";
 import SettingsModal from "./SettingsModal";
+import News from "../components/News/News";
 
 const drawerWidth = 240;
 
@@ -229,7 +230,7 @@ const PageTemplate = () => {
                     <Dashboard purchasedStocks={purchasedStocks} />
                     // <div>Dashboard</div>
                 )}
-                {currentPage === "news" && <div>News</div>}
+                {currentPage === "news" && <News />}
                 {currentPage === "search" && (
                     <Search
                         setPurchasedStocks={setPurchasedStocks}

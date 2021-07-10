@@ -171,12 +171,12 @@ mongoose
 // ROUTES
 const authRouter = require("./routes/authRoutes");
 const dataRouter = require("./routes/dataRoutes");
-// const newsRouter = require("./routes/newsRoutes");
+const newsRouter = require("./routes/newsRoutes");
 const stockRouter = require("./routes/stockRoutes");
 
 app.use("/api/auth", authRouter);
 app.use("/api/data", dataRouter);
-// app.use("/api/news", newsRouter);
+app.use("/api/news", newsRouter);
 app.use("/api/stock", stockRouter);
 
 // if (process.env.NODE_ENV === "production") {
