@@ -51,8 +51,10 @@ const Purchases = ({ purchasedStocks }) => {
                             <TableCell>Company Ticker</TableCell>
                             <TableCell>Name</TableCell>
                             <TableCell>Quantity</TableCell>
-                            <TableCell>Price of Purchase</TableCell>
-                            <TableCell>Purchase Total</TableCell>
+                            <TableCell align="right">
+                                Price of Purchase
+                            </TableCell>
+                            <TableCell align="right">Purchase Total</TableCell>
                             <TableCell align="right">Current Price</TableCell>
                             <TableCell align="right">Current Total</TableCell>
                             <TableCell align="right">Difference</TableCell>
